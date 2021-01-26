@@ -10,9 +10,14 @@ export default class Main extends React.Component {
   }
     render(){
     
-    let languageList = ["moose", "X", "Gemm", "Starfruit"]
+    let languageList = ["MOOSE", "EX", "Gemm", "Starfruit", "Oink", "Z+", "HotChocScript", "Crocodile#", "Gouda On Rails", 
+        "obvious", "CON", "smoov", "wicker2basic" ]
     
-    let frameworkList = ["Rodent", "VerBatim UI", "AbsoLoot", "Tangor Lite", "Taxidermy", "JAWbone", "Steven", "Dime Bag", "Oogoo by Murb", "Eggon", "Slim Fit", "Corduroy", "Geoduck"]
+    let frameworkList = ["Zungle", "VaVaVoom", "Rodent", "VerBatim UI", "AbsoLoot", "Tangor Lite", 
+        "Taxidermy", "JAWbone", "Steven", "Dime Bag", "Oogoo by Murb", "Eggon", "Slim Fit", "Corduroy", "Geoduck",
+        "Cherry Cheesecake", "Comte", "Orkhestra", "Hippogriff Lite", "JChimera", "DonQuoté", "LTNGBUG basic", "wicker2 JIB", "LATERAL", "parboil"]
+
+    let libraries = ["AtomsFere", "faULT", "kQuestion", "Cilantro", "Cilantro Chopped", "quiver"]
 
     let getLanguage = () => {
         let random = Math.floor(Math.random() * languageList.length);
@@ -32,12 +37,12 @@ export default class Main extends React.Component {
 
         return(
             <div>
-                <button onClick={() => { getLanguage(); getFramework(); }}> Click me </button>
+                <button onClick={() => { getLanguage(); getFramework(); }}> Give me a script! </button>
                 <p>
                     Hi, I'm a {this.state.language} developer.
                 </p>
                 <p>
-                    I use primarily use
+                    I work in
                 </p>
                 {this.state.framework}
 
