@@ -1,6 +1,5 @@
 import './App.css';
 import Main from './components/main.js';
-import MakeYourOwn from './components/make-your-own';
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
           Impress your friends with skills so fresh no one's heard of them.
         </p>
         <Main />
-        <MakeYourOwn />
       </header>
     </div>
   );
