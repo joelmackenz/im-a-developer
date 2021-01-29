@@ -59,7 +59,7 @@ export default class Main extends React.Component {
                 <button onClick={() => { getLanguage(); getFramework(); getLibrary(); }}> Give me a script! </button>
                 <MakeYourOwn onChange={generateName}/>
                 <p>
-                    Hi, I'm a
+                    Hi, I'm a(n)
                 </p>
                 <h2 className="variable">{this.state.language}</h2>
                 <p>

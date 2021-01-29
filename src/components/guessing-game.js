@@ -1,65 +1,73 @@
 import React from "react";
 
 export default class GuessingGame extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      framework: null,
-      toggle: true
+    constructor(props) {
+        super(props);
+        this.state = {
+            framework: null,
+            newFrameworkToggle: true,
+            answer: null,
+            answerShownToggle: "false"
+        }
     }
-  }
-    render(){
+    render() {
 
-    let realFrameworkList = ["Pycnic", "Watson", "TurboGears", "Web2py", "Flask", "Bottle", "CherryPy", "Sanic", "Tornado", 
-        "Hug", "aiohttp", "Growler", "Morepath", "Falcon", "Reahl", "Eve", "ButterfylNet", "Vue", "Ember", "Meteor", "Mithril", 
-        "Polymer", "Aurelia", "Svelte", "facil", "Qt", "Boost", "KDE", "GNOME", "TurboVision","Grape","Sinatra", "Camping", "Hanami",
-        "Ramaze", "NYNY", "Volt", "Cramp", "Ramverk", "Delayed::Job", "Sidekiq", "SuckerPunch", "Trailbrazer", "Nancy", "Scorched", "Spring",
-        "Cuba", "Shiny", "Hibernate", "Struts", "Grails", "Vaadin", "Blade", "Dropwizard", "Play", "Stripes", "Flexive", "Lift", "Grok", "Seaside",
-        "ColdBox", "PRADO", "Snap", "Pistache", "Quixote", "Blade", "gin", "beego", "echo", "kit"]
+        let realFrameworkList = ["Pycnic", "Watson", "TurboGears", "Web2py", "Flask", "Bottle", "CherryPy", "Sanic", "Tornado",
+            "Hug", "aiohttp", "Growler", "Morepath", "Falcon", "Reahl", "Eve", "ButterfylNet", "Vue", "Ember", "Meteor", "Mithril",
+            "Polymer", "Aurelia", "Svelte", "facil", "Qt", "Boost", "KDE", "GNOME", "TurboVision", "Grape", "Sinatra", "Camping", "Hanami",
+            "Ramaze", "NYNY", "Volt", "Cramp", "Ramverk", "Delayed::Job", "Sidekiq", "SuckerPunch", "Trailbrazer", "Nancy", "Scorched", "Spring",
+            "Cuba", "Shiny", "Hibernate", "Struts", "Grails", "Vaadin", "Blade", "Dropwizard", "Play", "Stripes", "Flexive", "Lift", "Grok", "Seaside",
+            "ColdBox", "PRADO", "Snap", "Pistache", "Quixote", "Blade", "gin", "beego", "echo", "kit"]
 
-    let fakeFrameworkList = ["dmPYls", "NuJersy", "rttUI", "Padrino", "Vynil", "Zephr", "Plumb", "Snyde", "SHRP", "commandR", "Elevate",
-        "Rapier", "Boing", "JAWbone", "Ladel", "Orchestra", "Hippogriff Lite", "Coriander", "Warp", "Necklace", "PERL Shell", "run", "Lite", "Katana", 
-        "bold.", "Zork", "Yes", "Tonic", "sly", "wait~work", "Hurricane", "Glue", "Compte", "Velvet", "Maskr", "hippGO", "Light", "IcePick", "Borealis", "IceRoad",
-        "Yum!", "Hook", "Bounce", "OrC+", "Edison", "Labarynth", "CreamJS", "Lure", "NS", "LRG" ]
+        let fakeFrameworkList = ["dmPYls", "NuJersy", "rttUI", "Padrino", "Vynil", "Zephr", "Plumb", "Snyde", "SHRP", "commandR", "Elevate",
+            "Rapier", "Boing", "JAWbone", "Ladel", "Orchestra", "Hippogriff Lite", "Coriander", "Warp", "Necklace", "PERL Shell", "run", "Lite", "Katana",
+            "bold.", "Zork", "Yes", "Tonic", "sly", "wait~work", "Hurricane", "Glue", "Compte", "Velvet", "Maskr", "hippGO", "Light", "IcePick", "Borealis", "IceRoad",
+            "Yum!", "Hook", "Bounce", "OrC+", "Edison", "Labarynth", "CreamJS", "Lure", "NS", "LRG"]
 
-    let getFramework = () => {
-        let completeFrameworkList = realFrameworkList.concat(fakeFrameworkList)
-        let random = Math.floor(Math.random() * completeFrameworkList.length);
-        let newFramework = completeFrameworkList[random]
-        this.setState({
-            framework: newFramework
-        })
-    }
-
-    function toggle() {
-        this.setState({
-            toggle: !this.state.toggle
-        })
-    }
-
-        function UserGreeting() {
-            return <h1>Welcome back!</h1>;
+        let getFramework = () => {
+            let completeFrameworkList = realFrameworkList.concat(fakeFrameworkList)
+            let random = Math.floor(Math.random() * completeFrameworkList.length);
+            let newFramework = completeFrameworkList[random]
+            this.setState({
+                framework: newFramework,
+                answer: null,
+                newFrameworkToggle: !this.state.newFrameworkToggle
+            })
         }
 
-        function GuestGreeting() {
-            return <h1>Please sign up.</h1>;
+        let showAnswer = () => {
+            this.setState({
+                answer: Answer(),
+                answerShownToggle: true,
+                newFrameworkToggle: true,
+            })
         }
 
-    function Greeting(props) {
-        const isLoggedIn = props.isLoggedIn;
-        if (isLoggedIn) {    
-            return <UserGreeting />;  }  
-            return <GuestGreeting />;}
+        let Answer = () => {
+            if (realFrameworkList.includes(this.state.framework)) {
+                return <h1>REAL</h1>;
+            } else {
+                return <h1>FAKE</h1>
+            }
+        }
+
+        function QuizButton(props) {
+            const toggle = props.newFrameworkToggle;
+            if (toggle) {
+                return <button onClick={() => { getFramework(); }}>New Framework</button>;
+            } else {
+                return <button onClick={() => { showAnswer() }}>Reveal</button>;
+            }
+        }
 
 
-
-        return(
+        return (
             <div>
-                <button onClick={() => { getFramework(), toggle() }}> New Framework </button>
+                <QuizButton newFrameworkToggle={this.state.newFrameworkToggle} />
                 <p>
                     {this.state.framework}
                 </p>
-                <Greeting isLoggedIn={false} />;
+                {this.state.answer}
             </div>
         )
     }
