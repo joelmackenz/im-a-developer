@@ -1,5 +1,6 @@
 import React from "react";
 import MakeYourOwn from './make-your-own'
+import GuessingGame from './guessing-game'
 import './main.css'
 
 export default class Main extends React.Component {
@@ -17,9 +18,8 @@ export default class Main extends React.Component {
         "obvious", "CON", "smoov", "wicker2basic", "SNOW",  ]
     
     let frameworkList = ["Zungle", "VaVaVoom", "Rodent", "VerBatim UI", "AbsoLoot", "Tangor Lite", 
-        "Taxidermy", "JAWbone", "Steven", "Dime Bag", "Oogoo by Murb", "Eggon", "Slim Fit", "Corduroy", "Geoduck",
-        "Cherry Cheesecake", "Comte", "Orkhestra", "Hippogriff Lite", "JChimera", "DonQuoté", "LTNGBUG basic", "wicker2 JIB", "LATERAL", "parboil",
-        "Ladel SBB", "Weft", "CastOn", "triangle"]
+        "Taxidermy", "Steven", "Dime Bag", "Oogoo by Murb", "Eggon", "Slim Fit", "Corduroy", "Geoduck",
+        "Cherry Cheesecake", "Hippogriff Lite", "JChimera", "DonQuoté", "LTNGBUG basic", "wicker2 JIB", "LATERAL", "parboil", "Weft", "CastOn", "triangle"]
 
     let libraryList = ["AtmosFere", "faULT", "kQuestion", "Cilantro", "Cilantro Chopped", "Quiver", "Weft", "Buckthorn", "FiddleHead", "LazyDog",
         "HandCream", "HamBone", "Squattle"]
@@ -75,6 +75,7 @@ export default class Main extends React.Component {
                     and I'm very familiar with the library
                 </p>
                 <h2 className="variable">{this.state.library}</h2>
+                <GuessingGame />
             </div>
         )
     }
